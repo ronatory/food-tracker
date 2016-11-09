@@ -53,7 +53,7 @@ class MealTableViewController: UITableViewController {
     return meals.count
   }
   
-   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     // Table view cells are reused and should be dequeued using a cell identifier
     let cellIdentifier = "MealTableViewCell"
     
@@ -61,57 +61,23 @@ class MealTableViewController: UITableViewController {
     
     // Fetches the appropriate meal for the data source layout.
     let meal = meals[indexPath.row]
-   
+    
     cell.nameLabel.text = meal.name
     cell.photoImageView.image = meal.photo
     cell.ratingControl.rating = meal.rating
-   
+    
     return cell
-   }
+  }
   
-  /*
-   // Override to support conditional editing of the table view.
-   override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-   // Return false if you do not want the specified item to be editable.
-   return true
-   }
-   */
-  
-  /*
-   // Override to support editing the table view.
-   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-   if editingStyle == .delete {
-   // Delete the row from the data source
-   tableView.deleteRows(at: [indexPath], with: .fade)
-   } else if editingStyle == .insert {
-   // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-   }
-   }
-   */
-  
-  /*
-   // Override to support rearranging the table view.
-   override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-   
-   }
-   */
-  
-  /*
-   // Override to support conditional rearranging of the table view.
-   override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-   // Return false if you do not want the item to be re-orderable.
-   return true
-   }
-   */
-  
-  /*
-   // MARK: - Navigation
-   
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   // Get the new view controller using segue.destinationViewController.
-   // Pass the selected object to the new view controller.
-   }
-   */
+  @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
+    if let sourceViewController = sender.source as? MealViewController, let meal = sourceViewController.meal {
+      // Add a new meal
+      // Note: computes the location in the table view where the new table view cell representing the new meal
+      // will be inserted and stores it in a local constant called newIndexPath
+      let newIndexPath = IndexPath(row: meals.count, section: 0)
+      meals.append(meal)
+      tableView.insertRows(at: [newIndexPath], with: .bottom)
+    }
+  }
   
 }
