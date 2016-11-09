@@ -12,6 +12,7 @@
 		47FBCC681DD30D65004B9992 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47FBCC661DD30D65004B9992 /* Main.storyboard */; };
 		47FBCC6A1DD30D65004B9992 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47FBCC691DD30D65004B9992 /* Assets.xcassets */; };
 		47FBCC6D1DD30D65004B9992 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47FBCC6B1DD30D65004B9992 /* LaunchScreen.storyboard */; };
+		47FBCC751DD35D06004B9992 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FBCC741DD35D06004B9992 /* RatingControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		47FBCC691DD30D65004B9992 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		47FBCC6C1DD30D65004B9992 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		47FBCC6E1DD30D65004B9992 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		47FBCC741DD35D06004B9992 /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				47FBCC621DD30D65004B9992 /* AppDelegate.swift */,
 				47FBCC641DD30D65004B9992 /* ViewController.swift */,
+				47FBCC741DD35D06004B9992 /* RatingControl.swift */,
 				47FBCC661DD30D65004B9992 /* Main.storyboard */,
 				47FBCC691DD30D65004B9992 /* Assets.xcassets */,
 				47FBCC6B1DD30D65004B9992 /* LaunchScreen.storyboard */,
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				47FBCC651DD30D65004B9992 /* ViewController.swift in Sources */,
+				47FBCC751DD35D06004B9992 /* RatingControl.swift in Sources */,
 				47FBCC631DD30D65004B9992 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,6 +304,7 @@
 				47FBCC731DD30D65004B9992 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
