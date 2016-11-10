@@ -20,8 +20,13 @@ class MealTableViewController: UITableViewController {
     // Use the edit button item provided by the table view controller
     navigationItem.leftBarButtonItem = editButtonItem
     
-    // Load the sample data
-    loadSampleMeals()
+    // load any saved meals, otherwise load sample data
+    if let savedMeals = loadMeals() {
+      meals += savedMeals
+    } else {
+      // Load the sample data
+      loadSampleMeals()
+    }
   }
   
   // helper method to load sample data into the app
@@ -49,6 +54,8 @@ class MealTableViewController: UITableViewController {
     if editingStyle == .delete {
       // Delete the row from the data source
       meals.remove(at: indexPath.row)
+      
+      saveMeals()
       
       tableView.deleteRows(at: [indexPath], with: .fade)
     } else if editingStyle == .insert {
@@ -107,6 +114,9 @@ class MealTableViewController: UITableViewController {
         meals.append(meal)
         tableView.insertRows(at: [newIndexPath], with: .bottom)
       }
+      
+      // save the meals
+      saveMeals()
     }
   }
   
@@ -131,4 +141,19 @@ class MealTableViewController: UITableViewController {
     }
   }
   
+  // MARK: NSCoding
+  func saveMeals() {
+    // attempts toarchive the meals array to a specific location and returns true if it's successful
+    let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(meals, toFile: Meal.ArchiveURL.path)
+    
+    if !isSuccessfulSave {
+      print("Failed to save meals...")
+    }
+  }
+  
+  // might return nil
+  func loadMeals() -> [Meal]? {
+    // attempts to unarchive the object stored at the path Meal.ArchiveURL.path! and downcast that object to an array of Meal objects
+    return NSKeyedUnarchiver.unarchiveObject(withFile: Meal.ArchiveURL.path) as? [Meal]
+  }
 }
